@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProjectConsultantTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProjectConsultantLabel_projectConsultantPK_clientDepartmentNumberProjCons}"/>
+                    <h:outputText value="#{projectConsultantController.selected.projectConsultantPK.clientDepartmentNumberProjCons}" title="#{bundle.ViewProjectConsultantTitle_projectConsultantPK_clientDepartmentNumberProjCons}"/>
+                    <h:outputText value="#{bundle.ViewProjectConsultantLabel_projectConsultantPK_clientNameProjCons}"/>
+                    <h:outputText value="#{projectConsultantController.selected.projectConsultantPK.clientNameProjCons}" title="#{bundle.ViewProjectConsultantTitle_projectConsultantPK_clientNameProjCons}"/>
+                    <h:outputText value="#{bundle.ViewProjectConsultantLabel_projectConsultantPK_projectNameCons}"/>
+                    <h:outputText value="#{projectConsultantController.selected.projectConsultantPK.projectNameCons}" title="#{bundle.ViewProjectConsultantTitle_projectConsultantPK_projectNameCons}"/>
+                    <h:outputText value="#{bundle.ViewProjectConsultantLabel_consultant}"/>
+                    <h:outputText value="#{projectConsultantController.selected.consultant}" title="#{bundle.ViewProjectConsultantTitle_consultant}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectConsultantController.destroyAndView}" value="#{bundle.ViewProjectConsultantDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProjectConsultantEditLink}"/>
+                <br />
+                <h:commandLink action="#{projectConsultantController.prepareCreate}" value="#{bundle.ViewProjectConsultantCreateLink}" />
+                <br />
+                <h:commandLink action="#{projectConsultantController.prepareList}" value="#{bundle.ViewProjectConsultantShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProjectConsultantIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

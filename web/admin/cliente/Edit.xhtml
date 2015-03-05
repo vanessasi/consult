@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditClienteLabel_clientePK_clientDepartmentNumber}" for="clientePK_clientDepartmentNumber" />
+                    <h:inputText id="clientePK_clientDepartmentNumber" value="#{clienteController.selected.clientePK.clientDepartmentNumber}" title="#{bundle.EditClienteTitle_clientePK_clientDepartmentNumber}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_clientePK_clientDepartmentNumber}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_clientePK_clientName}" for="clientePK_clientName" />
+                    <h:inputText id="clientePK_clientName" value="#{clienteController.selected.clientePK.clientName}" title="#{bundle.EditClienteTitle_clientePK_clientName}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_clientePK_clientName}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_contactEmail}" for="contactEmail" />
+                    <h:inputText id="contactEmail" value="#{clienteController.selected.contactEmail}" title="#{bundle.EditClienteTitle_contactEmail}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_contactEmail}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_contactPassword}" for="contactPassword" />
+                    <h:inputText id="contactPassword" value="#{clienteController.selected.contactPassword}" title="#{bundle.EditClienteTitle_contactPassword}" />
+                    <h:outputLabel value="#{bundle.EditClienteLabel_billingAddress}" for="billingAddress" />
+                    <h:selectOneMenu id="billingAddress" value="#{clienteController.selected.billingAddress}" title="#{bundle.EditClienteTitle_billingAddress}" >
+                        <f:selectItems value="#{addressController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{clienteController.update}" value="#{bundle.EditClienteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditClienteViewLink}"/>
+                <br />
+                <h:commandLink action="#{clienteController.prepareList}" value="#{bundle.EditClienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditClienteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

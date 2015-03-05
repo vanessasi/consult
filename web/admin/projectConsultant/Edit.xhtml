@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProjectConsultantTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditProjectConsultantLabel_projectConsultantPK_clientDepartmentNumberProjCons}" for="projectConsultantPK_clientDepartmentNumberProjCons" />
+                    <h:inputText id="projectConsultantPK_clientDepartmentNumberProjCons" value="#{projectConsultantController.selected.projectConsultantPK.clientDepartmentNumberProjCons}" title="#{bundle.EditProjectConsultantTitle_projectConsultantPK_clientDepartmentNumberProjCons}" required="true" requiredMessage="#{bundle.EditProjectConsultantRequiredMessage_projectConsultantPK_clientDepartmentNumberProjCons}"/>
+                    <h:outputLabel value="#{bundle.EditProjectConsultantLabel_projectConsultantPK_clientNameProjCons}" for="projectConsultantPK_clientNameProjCons" />
+                    <h:inputText id="projectConsultantPK_clientNameProjCons" value="#{projectConsultantController.selected.projectConsultantPK.clientNameProjCons}" title="#{bundle.EditProjectConsultantTitle_projectConsultantPK_clientNameProjCons}" required="true" requiredMessage="#{bundle.EditProjectConsultantRequiredMessage_projectConsultantPK_clientNameProjCons}"/>
+                    <h:outputLabel value="#{bundle.EditProjectConsultantLabel_projectConsultantPK_projectNameCons}" for="projectConsultantPK_projectNameCons" />
+                    <h:inputText id="projectConsultantPK_projectNameCons" value="#{projectConsultantController.selected.projectConsultantPK.projectNameCons}" title="#{bundle.EditProjectConsultantTitle_projectConsultantPK_projectNameCons}" required="true" requiredMessage="#{bundle.EditProjectConsultantRequiredMessage_projectConsultantPK_projectNameCons}"/>
+                    <h:outputLabel value="#{bundle.EditProjectConsultantLabel_consultant}" for="consultant" />
+                    <h:selectOneMenu id="consultant" value="#{projectConsultantController.selected.consultant}" title="#{bundle.EditProjectConsultantTitle_consultant}" required="true" requiredMessage="#{bundle.EditProjectConsultantRequiredMessage_consultant}">
+                        <f:selectItems value="#{consultantController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{projectConsultantController.update}" value="#{bundle.EditProjectConsultantSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditProjectConsultantViewLink}"/>
+                <br />
+                <h:commandLink action="#{projectConsultantController.prepareList}" value="#{bundle.EditProjectConsultantShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditProjectConsultantIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

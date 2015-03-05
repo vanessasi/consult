@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateConsultantTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_consultantId}" for="consultantId" />
+                    <h:inputText id="consultantId" value="#{consultantController.selected.consultantId}" title="#{bundle.CreateConsultantTitle_consultantId}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_consultantId}"/>
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_emailCon}" for="emailCon" />
+                    <h:inputText id="emailCon" value="#{consultantController.selected.emailCon}" title="#{bundle.CreateConsultantTitle_emailCon}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_emailCon}"/>
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_passwordCon}" for="passwordCon" />
+                    <h:inputText id="passwordCon" value="#{consultantController.selected.passwordCon}" title="#{bundle.CreateConsultantTitle_passwordCon}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_passwordCon}"/>
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_hourlyRate}" for="hourlyRate" />
+                    <h:inputText id="hourlyRate" value="#{consultantController.selected.hourlyRate}" title="#{bundle.CreateConsultantTitle_hourlyRate}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_hourlyRate}"/>
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_billableHourlyRate}" for="billableHourlyRate" />
+                    <h:inputText id="billableHourlyRate" value="#{consultantController.selected.billableHourlyRate}" title="#{bundle.CreateConsultantTitle_billableHourlyRate}" />
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_hireDate}" for="hireDate" />
+                    <h:inputText id="hireDate" value="#{consultantController.selected.hireDate}" title="#{bundle.CreateConsultantTitle_hireDate}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_hireDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_resumeCons}" for="resumeCons" />
+                    <h:inputText id="resumeCons" value="#{consultantController.selected.resumeCons}" title="#{bundle.CreateConsultantTitle_resumeCons}" />
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_statusId}" for="statusId" />
+                    <h:selectOneMenu id="statusId" value="#{consultantController.selected.statusId}" title="#{bundle.CreateConsultantTitle_statusId}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_statusId}">
+                        <f:selectItems value="#{consultantStatusController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateConsultantLabel_recruiterIdCons}" for="recruiterIdCons" />
+                    <h:selectOneMenu id="recruiterIdCons" value="#{consultantController.selected.recruiterIdCons}" title="#{bundle.CreateConsultantTitle_recruiterIdCons}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_recruiterIdCons}">
+                        <f:selectItems value="#{recruiterController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{consultantController.create}" value="#{bundle.CreateConsultantSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{consultantController.prepareList}" value="#{bundle.CreateConsultantShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateConsultantIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

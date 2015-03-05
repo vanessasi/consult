@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProjectTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_projectPK_clientDepartmentNumberProj}" for="projectPK_clientDepartmentNumberProj" />
+                    <h:inputText id="projectPK_clientDepartmentNumberProj" value="#{projectController.selected.projectPK.clientDepartmentNumberProj}" title="#{bundle.CreateProjectTitle_projectPK_clientDepartmentNumberProj}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectPK_clientDepartmentNumberProj}"/>
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_projectPK_projectNameProj}" for="projectPK_projectNameProj" />
+                    <h:inputText id="projectPK_projectNameProj" value="#{projectController.selected.projectPK.projectNameProj}" title="#{bundle.CreateProjectTitle_projectPK_projectNameProj}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectPK_projectNameProj}"/>
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_projectPK_clientNameProj}" for="projectPK_clientNameProj" />
+                    <h:inputText id="projectPK_clientNameProj" value="#{projectController.selected.projectPK.clientNameProj}" title="#{bundle.CreateProjectTitle_projectPK_clientNameProj}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectPK_clientNameProj}"/>
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_contactEmailProj}" for="contactEmailProj" />
+                    <h:inputText id="contactEmailProj" value="#{projectController.selected.contactEmailProj}" title="#{bundle.CreateProjectTitle_contactEmailProj}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_contactPasswordProj}" for="contactPasswordProj" />
+                    <h:inputText id="contactPasswordProj" value="#{projectController.selected.contactPasswordProj}" title="#{bundle.CreateProjectTitle_contactPasswordProj}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectController.create}" value="#{bundle.CreateProjectSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{projectController.prepareList}" value="#{bundle.CreateProjectShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProjectIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
